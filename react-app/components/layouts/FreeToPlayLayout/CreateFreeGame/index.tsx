@@ -7,7 +7,7 @@ import { toTimestamp } from "utils/toTimestamp";
 import CreateSessionInput from "../FreeToPlayInput";
 import { BigNumber as BigDecimal } from 'bignumber.js';
 import Link from "next/link";
-import { Opponent } from "@doubledice/platform/lib/graph";
+import { Opponent } from "../../../layouts/doubledice/platform//lib/graph";
 import {
   DoubleDice as DoubleDiceContract,
   DoubleDice__factory,
@@ -15,17 +15,15 @@ import {
   RoomEventInfo,
   VirtualFloorCreationParamsStruct,
   VirtualFloorMetadataV1Struct
-} from '@doubledice/platform/lib/contracts'
-import DoubleDices  from "@doubledice/platform/generated/abi/DoubleDice.json";
-import { validateRoomEventInfo } from '@doubledice/platform/lib/metadata'
+} from '../../../layouts/doubledice/platform//lib/contracts'
+import DoubleDices  from "../../../layouts/doubledice/platform/generated/abi/DoubleDice.json";
+import { validateRoomEventInfo } from '../../../layouts/doubledice/platform/lib/metadata'
 import * as SC from "./styles";
 import { JsonRpcSigner } from "@ethersproject/providers";
 import { Graphhelper } from "components/libs/Graphhelper";
 import { Clasical_Abi } from "components/libs/Clasical_Abi";
 import {MAIN_CONTRACT_ADDRESS} from '../../../main';
 import axios from "axios";
-import { contracts } from "@doubledice/platform";
-
 
 
 
@@ -592,20 +590,20 @@ try{
           value={params.betaOpen_e18}
           min={"10"}
           step={"0.000001"}
-           onChange={(e) => setParams((prevState) => ({ ...prevState, betaOpen: e.target.value }))}
+           onChange={(e) => setParams((prevState:any) => ({ ...prevState, betaOpen: e.target.value }))}
           label="betaOpen: "
         />
         <CreateSessionInput
           type="text"
           value={params.paymentToken}
-          onChange={(e) => setParams((prevState) => ({ ...prevState, paymentToken: e.target.value }))}
+          onChange={(e) => setParams((prevState:any) => ({ ...prevState, paymentToken: e.target.value }))}
           label="Payment Token: "
         />
         <CreateSessionInput
           type="number"
           value={params.totalFeeRate_e18}
           onChange={(e) =>
-            setParams((prevState) => ({
+            setParams((prevState:any) => ({
               ...prevState,
               totalFeeRate_e18:
                 e.target.value <= 100 && e.target.value >= 0 ? e.target.value : prevState.totalFeeRate_e18,
@@ -617,7 +615,7 @@ try{
           type="datetime-local"
           value={params.tOpen}
           min={disabledPreviousDates}
-          onChange={(e) => setParams((prevState) => ({ ...prevState, tOpen: e.target.value }))}
+          onChange={(e) => setParams((prevState:any) => ({ ...prevState, tOpen: e.target.value }))}
           label="tOpen: "
         />
        
@@ -625,39 +623,39 @@ try{
           type="datetime-local"
           min={disabledPreviousDates}
           value={params.tClose}
-          onChange={(e) => setParams((prevState) => ({ ...prevState, tClose: e.target.value }))}
+          onChange={(e) => setParams((prevState:any) => ({ ...prevState, tClose: e.target.value }))}
           label=" tClose: "
         />
         <CreateSessionInput
           type="datetime-local"
           min={disabledPreviousDates}
           value={params.tResolve}
-          onChange={(e) => setParams((prevState) => ({ ...prevState, tResolve: e.target.value }))}
+          onChange={(e) => setParams((prevState:any) => ({ ...prevState, tResolve: e.target.value }))}
           label="tResolve: "
         />
 
         <CreateSessionInput
           type="number"
           value={params.nOutcomes}
-          onChange={(e) => setParams((prevState) => ({ ...prevState, nOutcomes: e.target.value }))}
+          onChange={(e) => setParams((prevState:any) => ({ ...prevState, nOutcomes: e.target.value }))}
           label="Number of outcomes: "
         />
         <CreateSessionInput
           type="number"
           value={params.optionalMinCommitmentAmount}
-          onChange={(e) => setParams((prevState) => ({ ...prevState, optionalMinCommitmentAmount: Number(e.target.value) }))}
+          onChange={(e) => setParams((prevState:any) => ({ ...prevState, optionalMinCommitmentAmount: Number(e.target.value) }))}
           label="Min commitment amount (optional): "
         />
         <CreateSessionInput
           type="number"
           value={params.optionalMaxCommitmentAmount}
-          onChange={(e) => setParams((prevState) => ({ ...prevState, optionalMaxCommitmentAmount: Number(e.target.value) }))}
+          onChange={(e) => setParams((prevState:any) => ({ ...prevState, optionalMaxCommitmentAmount: Number(e.target.value) }))}
           label="Max commitment amount (optional): "
         />
         <CreateSessionInput
           type="number"
           value={params.bonusAmount}
-          onChange={(e) => setParams((prevState) => ({ ...prevState, bonusAmount: e.target.value }))}
+          onChange={(e) => setParams((prevState:any) => ({ ...prevState, bonusAmount: e.target.value }))}
           label="nOutcomes : "
         />
 

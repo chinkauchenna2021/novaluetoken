@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { convertTimestampToDate } from "utils/helpers";
 import * as SC from "./styles";
-import { Opponent } from "@doubledice/platform/lib/graph";
+import { Opponent } from "../../components/layouts/doubledice/platform/lib/graph";
 import CreateFreeToPlayInput from "components/layouts/FreeToPlayLayout/FreeToPlayInput";
 import { useAccount } from "contexts/AccountContext";
 import { BigNumber, ethers  ,BigNumberish } from "ethers";
@@ -20,9 +20,9 @@ import {
   RoomEventInfo,
   VirtualFloorCreationParamsStruct,
   VirtualFloorMetadataV1Struct
-} from '@doubledice/platform/lib/contracts'
-import DoubleDices  from "@doubledice/platform/generated/abi/DoubleDice.json";
-import { validateRoomEventInfo } from '@doubledice/platform/lib/metadata'
+} from '../../components/layouts/doubledice/platform/lib/contracts'
+import DoubleDices  from "../../components/layouts/doubledice/platform/generated/abi/DoubleDice.json";
+import { validateRoomEventInfo } from '../../components/layouts/doubledice/platform/lib/metadata'
 import { JsonRpcSigner } from "@ethersproject/providers";
 import { Graphhelper } from "components/libs/Graphhelper";
 import { Clasical_Abi } from "components/libs/Clasical_Abi";

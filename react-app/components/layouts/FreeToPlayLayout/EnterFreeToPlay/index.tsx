@@ -20,9 +20,9 @@ import {
   RoomEventInfo,
   VirtualFloorCreationParamsStruct,
   VirtualFloorMetadataV1Struct
-} from '@doubledice/platform/lib/contracts'
-import DoubleDices  from "@doubledice/platform/generated/abi/DoubleDice.json";
-import { validateRoomEventInfo } from '@doubledice/platform/lib/metadata'
+} from '../../../layouts/doubledice/platform/lib/contracts'
+import DoubleDices  from "../../../layouts/doubledice/platform/generated/abi/DoubleDice.json";
+import { validateRoomEventInfo } from '../../../layouts/doubledice/platform/lib/metadata'
 import { JsonRpcSigner } from "@ethersproject/providers";
 import { Graphhelper } from "components/libs/Graphhelper";
 import { Clasical_Abi } from "components/libs/Clasical_Abi";

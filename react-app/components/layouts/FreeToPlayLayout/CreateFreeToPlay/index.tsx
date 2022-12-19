@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { DummyERC20, DummyERC20__factory , DummyUSDTether, DummyUSDTether__factory} from '@doubledice/platform/lib/contracts'
-import { PaymentToken as PaymentTokenEntity } from '@doubledice/platform/lib/graph'
+import { DummyERC20, DummyERC20__factory , DummyUSDTether, DummyUSDTether__factory} from '../../../layouts/doubledice/platform/lib/contracts'
+import { PaymentToken as PaymentTokenEntity } from '../../../layouts/doubledice/platform/lib/graph'
 import { useAccount } from "contexts/AccountContext";
-import  DummyUSDTethers from '@doubledice/platform/artifacts/contracts/dev/dummy/DummyUSDTether.sol/DummyUSDTether.json';
+import  DummyUSDTethers from '../../../layouts/doubledice/platform/artifacts/contracts/dev/dummy/DummyUSDTether.sol/DummyUSDTether.json';
 import {  Contract,BigNumber as BigInteger, BigNumberish, ethers, providers } from "ethers";
 import { useRouter } from "next/router";
 import { $ } from "utils/helpers";
@@ -113,7 +113,7 @@ addNetwork(80001);
       alert("you can only receive 1000 USDT every 24hours ")
      }
   }catch(e){
-     console.log(e);
+    alert("you can only receive 1000 USDT every 24hours ")
    }     
 
   };
