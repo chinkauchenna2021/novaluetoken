@@ -9,9 +9,14 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
 
-const withTranspilation = require("next-transpile-modules")
+const withTranspilation = require("next-transpile-modules")([
+  "../components/layouts/doubledice/platform"
+])
 
 module.exports = withTranspilation(nextConfig)
 

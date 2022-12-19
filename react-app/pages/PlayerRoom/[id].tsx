@@ -351,6 +351,7 @@ const selectedBet = (opponents:Opponent[])=>{
 
 
 const availabelOponents = (obj:Oponents[]):string =>{
+  console.log(obj)
   const value = obj.map((o)=>o.title).join(' vs ')
   return  value.toString();
 }
@@ -405,6 +406,7 @@ function checkStatus():string{
 
   const sumSupply = ():number =>{
     let sumData =  0;
+    console.log(outcomeData)
     outcomeData?.map(outcome=>{
 
 sumData += Number(outcome.totalSupply)
@@ -414,6 +416,7 @@ sumData += Number(outcome.totalSupply)
 
   const sumWeightedSupply = ():number =>{
     let sumData =  0;
+    console.log(outcomeData)
     outcomeData?.map(outcome=>{
 
    sumData += Number(outcome.totalWeightedSupply)
@@ -430,7 +433,7 @@ sumData += Number(outcome.totalSupply)
 
 
 const findUsersBet = ():boolean[] | undefined=>{
-
+  console.log(payout)
 let value =  payout?.map(data=>{
    if (data.userOutcomes.length !== 0){
      payIndex?.push(data.index)
