@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   swcMinify: true,
-  distDir: 'build',
+  distDir: '.next',
   eslint: {
     ignoreDuringBuilds: true,
     },
