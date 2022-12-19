@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   distDir: 'build',
@@ -11,12 +11,12 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
-  },
+  }
 }
 
 // const withTranspilation = require("next-transpile-modules")([
 //   "@doubledice/platform"
 // ])
 
-module.exports = nextConfig;
+// module.exports = nextConfig;
 
