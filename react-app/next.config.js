@@ -11,9 +11,7 @@ const nextConfig = {
   },
 }
 
-const withTranspilation = require("next-transpile-modules")([
-  "@doubledice/platform"
-])
+const withTranspilation = require("next-transpile-modules")
 
 module.exports = withTranspilation(nextConfig)
 
