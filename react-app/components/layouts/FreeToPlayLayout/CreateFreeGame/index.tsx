@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useCallback, useMemo, useState  , useEffect} from "react";
 import { useAccount } from "contexts/AccountContext";
 import { BigNumber, ethers  ,BigNumberish } from "ethers";

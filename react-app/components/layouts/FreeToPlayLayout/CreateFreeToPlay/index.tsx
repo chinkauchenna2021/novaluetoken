@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useCallback, useMemo, useState } from "react";
 import { DummyERC20, DummyERC20__factory , DummyUSDTether, DummyUSDTether__factory} from '../../../layouts/doubledice/platform/lib/contracts'
 import { PaymentToken as PaymentTokenEntity } from '../../../layouts/doubledice/platform/lib/graph'

@@ -9,9 +9,13 @@ module.exports = {
   compiler: {
     styledComponents: true,
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  }
+    typescript: {
+      // !! WARN !!
+      // Dangerously allow production builds to successfully complete even if
+      // your project has type errors.
+      // !! WARN !!
+      ignoreBuildErrors: true,
+    },
 }
 
 // const withTranspilation = require("next-transpile-modules")([
