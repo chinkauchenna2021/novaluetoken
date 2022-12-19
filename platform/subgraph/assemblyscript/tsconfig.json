@@ -1,0 +1,13 @@
+{
+  "extends": "assemblyscript/std/assembly.json",
+  "files": [
+    "./constants.ts",
+    "./entities.ts",
+    "./env.template.ts",
+    "./mapping.ts",
+    "./metadata.ts",
+    "./result-update-action.ts",
+    "./roles.ts",
+    "./utils.ts",
+  ]
+}

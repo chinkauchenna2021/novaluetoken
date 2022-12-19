@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "react-hooks/exhaustive-deps": "off",
+    "simple-import-sort/exports": "off",
+    "no-unused-expressions": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "simple-import-sort/imports": "off"
+  },
+  "ignorePatterns": ["lib/", "utils/notify.ts"],
+  "parserOptions": {
+    "sourceType": "module"
+},
+"extends": "eslint:recommended",
+  "overrides": [{
+    "files": ["*/components/** "]
+  }]
+}

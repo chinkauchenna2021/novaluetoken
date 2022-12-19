@@ -1,0 +1,8 @@
+{
+  "packages": [
+    "platform",
+    "react-app",
+    "autotasks"
+  ],
+  "version": "0.1.0"
+}
