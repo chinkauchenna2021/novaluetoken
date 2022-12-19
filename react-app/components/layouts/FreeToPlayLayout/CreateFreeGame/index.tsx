@@ -18,7 +18,7 @@ import {
   VirtualFloorMetadataV1Struct
 } from '../../../layouts/doubledice/platform//lib/contracts'
 import DoubleDices  from "../../../layouts/doubledice/platform/generated/abi/DoubleDice.json";
-import { validateRoomEventInfo } from '../../../layouts/doubledice/platform/lib/metadata'
+
 import * as SC from "./styles";
 import { JsonRpcSigner } from "@ethersproject/providers";
 import { Graphhelper } from "components/libs/Graphhelper";
@@ -286,13 +286,6 @@ let {
           extraData: '0x'
         }
 
-
-        if (!validateRoomEventInfo(metadata)) {
-          console.error(validateRoomEventInfo.errors)
-          alert(JSON.stringify(validateRoomEventInfo.errors))
-          return
-        }
-    
 
 
 
