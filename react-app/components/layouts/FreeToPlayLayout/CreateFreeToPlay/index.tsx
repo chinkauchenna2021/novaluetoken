@@ -98,8 +98,7 @@ React.useEffect(()=>{
   }
 
 })()
-addNetwork(80001);
-  
+
 },[])
 
 
