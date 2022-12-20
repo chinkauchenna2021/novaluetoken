@@ -148,7 +148,7 @@ export const CUSTOM_URLS: { [chainId: number]: string[] } = Object.keys(CHAINS).
 );
 
 export const blockchainParams = {
-  chainId:"0x80001",
+  chainId:`0x${convertNumToHexdecimal(80001)}`,
   chainName: "Mumbai Testnet",
   nativeCurrency: {
     name: "MATIC",
