@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { $ } from "utils/helpers";
 import { toTimestamp } from "utils/toTimestamp";
 import { addNetwork } from "utils/chains";
-
+import { convertNumToHexdecimal } from "utils/helpers";
 
 import * as SC from "./styles";
 // import { BigNumber as BigInteger, BigNumberish, ethers, providers } from 'ethers'
@@ -80,7 +80,7 @@ React.useEffect(()=>{
 
 (async ()=>{
   const data = [{
-      chainId: '0x80001',
+      chainId: `0x${convertNumToHexdecimal(80001)}`,
       chainName: 'Mumbai testnet',
       nativeCurrency:
           {
