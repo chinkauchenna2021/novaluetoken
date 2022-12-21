@@ -92,7 +92,7 @@ export const addNetwork = async (id: number) => {
       networkData = [
         {
           chainId: `0x${convertNumToHexdecimal(80001)}`,
-          chainName: "Mumbai Testnet",
+          chainName: "Mumbai",
           rpcUrls: ["https://rpc-mumbai.maticvigil.com"],
           nativeCurrency: {
             name: "MATIC COIN",
@@ -119,13 +119,6 @@ export const addNetwork = async (id: number) => {
 };
 
 export const CHAINS: { [chainId: number]: ExtendedChainInformation } = {
-  // Polygon
-  137: {
-    urls: ["https://polygon-rpc.com"],
-    name: "Polygon Mainnet",
-    nativeCurrency: MATIC,
-    blockExplorerUrls: "https://polygonscan.com",
-  },
   80001: {
     urls: ["https://rpc-mumbai.maticvigil.com"],
     name: "Polygon Mumbai",
@@ -149,9 +142,9 @@ export const CUSTOM_URLS: { [chainId: number]: string[] } = Object.keys(CHAINS).
 
 export const blockchainParams = {
   chainId:`0x${convertNumToHexdecimal(80001)}`,
-  chainName: "Mumbai Testnet",
+  chainName: "Mumbai",
   nativeCurrency: {
-    name: "MATIC",
+    name: "Matic",
     symbol: "MATIC",
     decimals: 18,
   },

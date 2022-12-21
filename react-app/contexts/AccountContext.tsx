@@ -34,7 +34,6 @@ const AccountProvider: React.FC<AccountProviderProps> = ({ children }) => {
     const signer = web3Provider.getSigner();
     const address = await signer?.getAddress();
 
-    console.log({ signer, address });
 
     setProvider(web3Provider);
     setSigner(signer);
@@ -52,8 +51,6 @@ const AccountProvider: React.FC<AccountProviderProps> = ({ children }) => {
 
     const { chainId } = await web3Provider.getNetwork();
 
-    console.log({ chainId });
-    
 
     if (blockchainParams.chainId) {
       console.info(chainId, parseInt(blockchainParams.chainId, 16));
