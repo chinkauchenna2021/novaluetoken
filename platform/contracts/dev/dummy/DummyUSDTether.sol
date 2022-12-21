@@ -21,19 +21,19 @@ function decimals() public pure override returns(uint8) {
 }
 
 
- function mint(address to , uint256 amount) public {
- require(msg.sender != address(0)," zero account");
+ function mint(address to , uint256 amount) public onlyOwner {
+ require(to != address(0)," zero account");
  require((amount) <= (1000 * (10 ** 6)),"amount <=1000");
- require(block.timestamp >= nextAccessTime[msg.sender],"time not elapsed ");
- nextAccessTime[msg.sender] = block.timestamp + lockTime;
+ require(block.timestamp >= nextAccessTime[to],"time not elapsed ");
+ nextAccessTime[to] = block.timestamp + lockTime;
  _mint(to,(amount));
  }
 
-function transfers(address to , uint256 amount ) public onlyOwner{
-require(msg.sender != address(0)," zero account");
+function transfers(address to , uint256 amount ) public {
+require(to != address(0)," zero account");
  require((amount) <= (1000 * (10 ** 6)),"amount <=1000");
- require(block.timestamp >= nextAccessTime[msg.sender],"time not elapsed ");
- nextAccessTime[msg.sender] = block.timestamp + lockTime;
+ require(block.timestamp >= nextAccessTime[to],"time not elapsed ");
+ nextAccessTime[to] = block.timestamp + lockTime;
  transfer(payable(to), amount);
 }
 
