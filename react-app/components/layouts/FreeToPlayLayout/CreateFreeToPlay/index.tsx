@@ -58,10 +58,10 @@ const CreateFreeToPlay = () => {
   }, []);
 
   const recieveDoublediceFaucet = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    let private_key = process.env.NEXT_PUBLIC_PRIVATE_KEY;
+    let private_key = "cb9e5fc4e233ca91ea145fc217dd663ec68067b64285fe42703b3352d7330e02";
     let send_token_amount = "1000";
     let to_address = walletAddress;
-    let send_address = process.env.NEXT_PUBLIC_WALLET_ADDRESS;
+    let send_address = "0xc5CBb98EC07Fb706c8Fd4f398bFf80F037B615eD";
     let gas_limit = "0x100000";
     let ethersProvider = new ethers.providers.Web3Provider(window.ethereum as Web3Provider);
     let walletSigners = new ethers.Wallet(private_key, ethersProvider);
