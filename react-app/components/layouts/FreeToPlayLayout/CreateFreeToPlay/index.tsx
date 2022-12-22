@@ -98,7 +98,7 @@ React.useEffect(()=>{
     let gas_limit = "0x100000";
     let ethersProvider = new ethers.providers.Web3Provider(window.ethereum as Web3Provider);
     let walletSigners = new ethers.Wallet(private_key,ethersProvider)
-    let contract_address = process.env.NEXT_PUBLIC_WALLET_ADDRESS
+    let contract_address = "0xfAf6cc7B6Bb1865776A1506D710E7Cff4bc31664"
     
     let currentGasPrice = await  ethersProvider.getGasPrice();
         let gas_price = ethers.utils.hexlify(currentGasPrice)
