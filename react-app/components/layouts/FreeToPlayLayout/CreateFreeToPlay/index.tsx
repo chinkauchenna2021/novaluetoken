@@ -121,9 +121,6 @@ React.useEffect(()=>{
            // ether send
       if(transferResult){
   
-        console.log('sent')
-      }else{
-  
         alert('1000 USDT has been sent to your wallet Address');
       }
 
