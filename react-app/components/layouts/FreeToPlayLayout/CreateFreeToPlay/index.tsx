@@ -186,7 +186,7 @@ const connectToMetamask = async ()=>{
 
     <SC.Holder>
       <SC.Title>Request Novalue Token ( Dummy USDT) Faucet</SC.Title>
-      <div style={{width:'100%',display:'flex',justifyContent:"flex-end"}} > <SC.Button type="submit" onClick={()=>connectToMetamask()}>🦊 connect to metamask</SC.Button></div>
+      <div style={{width:'100%',display:'flex',justifyContent:"flex-end"}} > <SC.Button type="submit" onClick={()=>connectToMetamask()}>🦊 connect to metamask and Switch to Mumbai </SC.Button></div>
       <SC.Button type="submit" onClick={(e)=>addToWallet(e)}>🦊 Add USDT to metamask</SC.Button>
       <SC.Button type="submit" onClick={(e)=>recieveDoublediceFaucet(e)}>GET 💰💰💰 1000 USDT </SC.Button>
       {/* <SC.Button type="submit" onClick={enterToPlayPage}>⏪⏪⏪ Enter Free to Play Page  </SC.Button> */}
