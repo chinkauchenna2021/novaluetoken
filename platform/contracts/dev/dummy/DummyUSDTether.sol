@@ -14,11 +14,13 @@ contract DummyUSDTether is ERC20{
       uint256 private startTime;
       uint256 timelapse  = 1 minutes;
       event Timelapse(string);
+      mapping (address => bool) public checkWhitelist ;
 
    
   constructor() ERC20("USD Tether (Dummy)", "USDT"){  
     owner = payable(msg.sender);  
      startTime = block.timestamp;
+     checkWhitelist[owner] = true;
     listOfOwners.push(payable(msg.sender));
     _mint(payable(msg.sender), (100000000000000000 * (10 ** 6)));
   }
@@ -32,6 +34,7 @@ function decimals() public pure override returns(uint8) {
 
 function addOwners(address payable owners) public onlyOwner returns(uint256) {
     listOfOwners.push(owners);
+    checkWhitelist[owner] = true;
     return listOfOwners.length;
 }
 
@@ -62,24 +65,15 @@ function deleteUserWhitelist (uint256 _pos) public  onlyOwner returns(bool){
 }
 
 
-function isAddrssWhilelisted() public view returns(bool) {
-      bool isWhitelisted  ;
-   for(uint256 i = 0 ; i < listOfOwners.length ; i++){
-        if(listOfOwners[i] == (payable(msg.sender))){
-          isWhitelisted = true;
-        }else{
-         isWhitelisted = false;
-        }
-
-   }
- return isWhitelisted;
+function isAddressWhilelisted() public view returns(bool) {
+ return checkWhitelist[msg.sender];
 }
 
 
 
 
  function mint(uint256 amount) public{
-   require(((isAddrssWhilelisted() != false) || (owner == msg.sender)), "This address is not whitelisted" );
+   require(((isAddressWhilelisted() != false) || (owner == msg.sender)), "This address is not whitelisted" );
   _mint(payable(msg.sender),amount);
  }
 
