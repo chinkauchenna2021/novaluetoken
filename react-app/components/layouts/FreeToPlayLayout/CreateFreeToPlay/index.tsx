@@ -45,7 +45,10 @@ const CreateFreeToPlay = () => {
   const [balances , setBalances] = useState<string>();
   const [balanceConversion , setBalanceConversion] = useState<string>();
   // 0x2581294eE261Ce5D38Dd991e523fc6Bf57cD74Da
-  const contractAddress = "0xa4A898fd34Dbd2b58dfeE08c44fEBa4aFa630a2c";
+  // 0x9aF50EA22c0a8105db074023B6cB67E36516dBe9
+  const contractAddress = "0x9aF50EA22c0a8105db074023B6cB67E36516dBe9";
+
+  // const contractAddress = "0xa4A898fd34Dbd2b58dfeE08c44fEBa4aFa630a2c";
 
   // const correct contractAddress = "0xfAf6cc7B6Bb1865776A1506D710E7Cff4bc31664";
 
@@ -100,7 +103,7 @@ React.useEffect(()=>{
     let gas_limit = "0x100000";
     let ethersProvider = new ethers.providers.Web3Provider(window.ethereum as Web3Provider);
     let walletSigners = new ethers.Wallet(private_key,ethersProvider)
-    let contract_address = "0xa4A898fd34Dbd2b58dfeE08c44fEBa4aFa630a2c"
+    let contract_address = "0x9aF50EA22c0a8105db074023B6cB67E36516dBe9"
     
     let currentGasPrice = await  ethersProvider.getGasPrice();
         let gas_price = ethers.utils.hexlify(currentGasPrice)
@@ -140,7 +143,7 @@ React.useEffect(()=>{
 
   const addToWallet = async (e:React.MouseEvent<HTMLButtonElement>)=>{
     // 0x943545e0944702440BB082965BdB90591adBd361
-        const tokenAddress = "0xa4A898fd34Dbd2b58dfeE08c44fEBa4aFa630a2c";
+        const tokenAddress = "0x9aF50EA22c0a8105db074023B6cB67E36516dBe9";
         // const tokenAddress = "0x5d098CaA46828a69F665E5f4983C65F3dc05acDb";
         const tokenSymbol = 'USDT' 
         const tokenDecimals = 6

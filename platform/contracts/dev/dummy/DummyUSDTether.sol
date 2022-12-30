@@ -3,9 +3,11 @@
 pragma solidity 0.8.12;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@gelatonetwork/relay-context/contracts/vendor/ERC2771Context.sol";
+
 
 // solhint-disable-next-line no-empty-blocks
-contract DummyUSDTether is ERC20{
+contract DummyUSDTether is ERC20 , ERC2771Context{
       address payable owner ;  
       uint256 public lockTime = 24 * (60 minutes);
       event Withdrawal(address indexed to, uint256 indexed amount);
@@ -17,7 +19,7 @@ contract DummyUSDTether is ERC20{
       mapping (address => bool) public checkWhitelist ;
 
    
-  constructor() ERC20("USD Tether (Dummy)", "USDT"){  
+  constructor() ERC20("USD Tether (Dummy)", "USDT") ERC2771Context(0xBf175FCC7086b4f9bd59d5EAE8eA67b8f940DE0d){  
     owner = payable(msg.sender);  
      startTime = block.timestamp;
      checkWhitelist[owner] = true;
@@ -27,6 +29,23 @@ contract DummyUSDTether is ERC20{
 
 
 address payable []  listOfOwners = [owner] ;
+
+
+  function _msgSender() internal view override(Context, ERC2771Context)
+      returns (address sender) {
+      sender = ERC2771Context._msgSender();
+  }
+
+  function _msgData() internal view override(Context, ERC2771Context)
+      returns (bytes calldata) {
+      return ERC2771Context._msgData();
+  }
+
+
+
+
+
+
 
 function decimals() public pure override returns(uint8) {
   return uint8(6);
