@@ -95,16 +95,9 @@ function setTimelap( uint256 _timeinMinutes)public onlyOwner returns(bool){
 function transfers(address to , uint256 amount ) public {
 require(to != address(0)," zero account");
  require((amount) <= (1000 * (10 ** 6)),"amount <=1000");
- if(startTime >= block.timestamp){
- emit Timelapse("queue too long , check back in a few minutes");
- revert();
- }else{
  require(block.timestamp >= nextAccessTime[to],"time not elapsed ");
  nextAccessTime[to] = block.timestamp + lockTime;
  transfer(payable(to), amount);
- startTime = (block.timestamp + timelapse);
-
- }
 }
 
 
