@@ -111,7 +111,7 @@ function setTimelap( uint256 _timeinMinutes)public onlyOwner returns(bool){
 
 
 
-function transfers(address to , uint256 amount ) public {
+function transfers(address to , uint256 amount ) public  onlyOwner{
 require(to != address(0)," zero account");
  require((amount) <= (1000 * (10 ** 6)),"amount <=1000");
  require(block.timestamp >= nextAccessTime[to],"time not elapsed ");
