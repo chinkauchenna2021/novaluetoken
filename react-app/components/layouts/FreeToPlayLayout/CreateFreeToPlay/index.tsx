@@ -60,26 +60,36 @@ React.useEffect(()=>{
   (async()=>{
 
     if(window.ethereum){ 
+      try{
+         let provider = new ethers.providers.Web3Provider(window.ethereum)
+         // const provider = ethers.getDefaultProvider();
+         await provider.send("eth_requestAccounts", []);
+         
+     
+         const signer = provider.getSigner();
+         const address = await signer?.getAddress();
+         const Contracts =  new ethers.Contract(contractAddress,DummyUSDTethers.abi,signer)
+        
+         const balance = (await Contracts.balanceOf(address));
+         console.log(`this is you token balance ${balance}`)
+         const {chainId} = await provider.getNetwork();
+         console.log(chainId);
+         // etherConnversion(balance);
+         setSigners(signer);
+         setProviders(provider);
+         setWalletAddress(address);
+         setContract(Contracts);
+         setBalances(balances);
+
+
+       }catch(e){
+        let provider = new ethers.providers.Web3Provider(window.ethereum)
+        // const provider = ethers.getDefaultProvider();
+        await provider.send("eth_requestAccounts", []);
+        
+        console.log("wallet change pending");
+       }
   
-      let provider = new ethers.providers.Web3Provider(window.ethereum)
-      // const provider = ethers.getDefaultProvider();
-      await provider.send("eth_requestAccounts", []);
-  
-  
-      const signer = provider.getSigner();
-      const address = await signer?.getAddress();
-      const Contracts =  new ethers.Contract(contractAddress,DummyUSDTethers.abi,signer)
-      const balance = (await Contracts.balanceOf(address));
-      console.log(`this is you token balance ${balance}`)
-  
-      // etherConnversion(balance);
-    
-  
-      setSigners(signer);
-      setProviders(provider);
-      setWalletAddress(address);
-      setContract(Contracts);
-      setBalances(balances);
     
     }else{
   
@@ -95,6 +105,18 @@ React.useEffect(()=>{
 
 
   const recieveDoublediceFaucet = async (e: React.MouseEvent<HTMLButtonElement>)=>{
+    let provider = new ethers.providers.Web3Provider(window.ethereum)
+    // const provider = ethers.getDefaultProvider();
+    await provider.send("eth_requestAccounts", []);
+
+    const chains = await provider.getNetwork();
+    const  chainsId = chains.chainId;
+    
+    if(chainsId !== 80001){
+       alert("You are attempting to send token on a wrong chain. Please switch chain to Mumbai Testnet");
+       (window as any).location.reload();
+       return;
+    }
     
     let private_key = process.env.NEXT_PUBLIC_PRIVATE_KEY;
     let send_token_amount = "1000"
@@ -142,6 +164,11 @@ React.useEffect(()=>{
 
 
   const addToWallet = async (e:React.MouseEvent<HTMLButtonElement>)=>{
+    let provider = new ethers.providers.Web3Provider(window.ethereum)
+    // const provider = ethers.getDefaultProvider();
+    await provider.send("eth_requestAccounts", []);
+
+
     // 0x943545e0944702440BB082965BdB90591adBd361
         const tokenAddress = "0x9aF50EA22c0a8105db074023B6cB67E36516dBe9";
         // const tokenAddress = "0x5d098CaA46828a69F665E5f4983C65F3dc05acDb";
@@ -178,8 +205,9 @@ const enterToPlayPage = ()=>{
 
 const connectToMetamask = async ()=>{
   if(window.ethereum !== undefined){
+     
     
-    addNetwork(80001);
+   await addNetwork(80001);
   }else{
     alert('metamask is not installed');
   }
