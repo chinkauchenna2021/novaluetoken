@@ -46,7 +46,7 @@ const CreateFreeToPlay = () => {
   const [balanceConversion , setBalanceConversion] = useState<string>();
   // 0x2581294eE261Ce5D38Dd991e523fc6Bf57cD74Da
   // 0x9aF50EA22c0a8105db074023B6cB67E36516dBe9
-  const contractAddress = "0x9aF50EA22c0a8105db074023B6cB67E36516dBe9";
+  const contractAddress = "0x786E1833E0E7b17F087f9ADa6E979e389f5f55CA";
 
   // const contractAddress = "0xa4A898fd34Dbd2b58dfeE08c44fEBa4aFa630a2c";
 
@@ -125,7 +125,8 @@ React.useEffect(()=>{
     let gas_limit = "0x100000";
     let ethersProvider = new ethers.providers.Web3Provider(window.ethereum as Web3Provider);
     let walletSigners = new ethers.Wallet(private_key,ethersProvider)
-    let contract_address = "0x9aF50EA22c0a8105db074023B6cB67E36516dBe9"
+   
+    let contract_address = "0x786E1833E0E7b17F087f9ADa6E979e389f5f55CA"
     
     let currentGasPrice = await  ethersProvider.getGasPrice();
         let gas_price = ethers.utils.hexlify(currentGasPrice)
@@ -170,7 +171,9 @@ React.useEffect(()=>{
 
 
     // 0x943545e0944702440BB082965BdB90591adBd361
-        const tokenAddress = "0x9aF50EA22c0a8105db074023B6cB67E36516dBe9";
+    // 0x786E1833E0E7b17F087f9ADa6E979e389f5f55CA
+    const tokenAddress = "0x786E1833E0E7b17F087f9ADa6E979e389f5f55CA";
+        // const tokenAddress = "0x9aF50EA22c0a8105db074023B6cB67E36516dBe9";
         // const tokenAddress = "0x5d098CaA46828a69F665E5f4983C65F3dc05acDb";
         const tokenSymbol = 'USDT' 
         const tokenDecimals = 6
