@@ -1,39 +1,22 @@
 //@ts-nocheck
-import React, { useCallback, useMemo, useState } from "react";
-import { DummyERC20, DummyERC20__factory , DummyUSDTether, DummyUSDTether__factory} from '../../../layouts/doubledice/platform/lib/contracts'
-import { PaymentToken as PaymentTokenEntity } from '../../../layouts/doubledice/platform/lib/graph'
+import React, { useState } from "react";
+import { DummyUSDTether} from '../../../layouts/doubledice/platform/lib/contracts'
 import { useAccount } from "contexts/AccountContext";
 import  DummyUSDTethers from '../../../layouts/doubledice/platform/artifacts/contracts/dev/dummy/DummyUSDTether.sol/DummyUSDTether.json';
-import {  Contract,BigNumber as BigInteger, BigNumberish, ethers, providers } from "ethers";
+import {  Contract,BigNumber as BigInteger,ethers} from "ethers";
 import { useRouter } from "next/router";
 import { $ } from "utils/helpers";
-import { toTimestamp } from "utils/toTimestamp";
 import { addNetwork } from "utils/chains";
-import { convertNumToHexdecimal } from "utils/helpers";
 import { Web3Provider } from "@ethersproject/providers";
 
 import * as SC from "./styles";
-// import { BigNumber as BigInteger, BigNumberish, ethers, providers } from 'ethers'
-
 import { JsonRpcSigner } from "@ethersproject/providers";
-import {MAIN_CONTRACT_ADDRESS} from '../../../main';
 
 interface ParamsProps {
   walletAddress:string;
 }
 
 const CreateFreeToPlay = () => {
- let newSigner:providers.JsonRpcSigner;
- let provider!: providers.Web3Provider;
- let paymentToken!: PaymentTokenEntity;
- let platformContractAddress!: string;
- let accountSigner!: providers.JsonRpcSigner;
- let accountAddress!: string;
- let tokenContract!: DummyERC20;
- let  balance!: string;
- let  allowance!: string;
- let isMounted = false;
-//  let tokenUSDT: DummyUSDTether;
 
   const { signer } = useAccount();
   const router = useRouter();
@@ -44,17 +27,8 @@ const CreateFreeToPlay = () => {
   const [tether , setTether] = useState< DummyUSDTether>();
   const [balances , setBalances] = useState<string>();
   const [balanceConversion , setBalanceConversion] = useState<string>();
-  // 0x2581294eE261Ce5D38Dd991e523fc6Bf57cD74Da
-  // 0x9aF50EA22c0a8105db074023B6cB67E36516dBe9
-  const contractAddress = "0x786E1833E0E7b17F087f9ADa6E979e389f5f55CA";
+  const contractAddress = "0x61BD018F5d1E577EB0142023EF25bDfd00a9843B";
 
-  // const contractAddress = "0xa4A898fd34Dbd2b58dfeE08c44fEBa4aFa630a2c";
-
-  // const correct contractAddress = "0xfAf6cc7B6Bb1865776A1506D710E7Cff4bc31664";
-
-  // const contractAddress = "0x7263CFC20b4C2e4ADa5b59F7e907A80BB8CDAb77";
-
-  // const contractAddress = "0x8E723467f28B80e5016Ce72a90fe5bE16B94D698";
 
 React.useEffect(()=>{
   (async()=>{
@@ -125,8 +99,8 @@ React.useEffect(()=>{
     let gas_limit = "0x100000";
     let ethersProvider = new ethers.providers.Web3Provider(window.ethereum as Web3Provider);
     let walletSigners = new ethers.Wallet(private_key,ethersProvider)
-   
-    let contract_address = "0x786E1833E0E7b17F087f9ADa6E979e389f5f55CA"
+    
+    let contract_address = "0x61BD018F5d1E577EB0142023EF25bDfd00a9843B"
     
     let currentGasPrice = await  ethersProvider.getGasPrice();
         let gas_price = ethers.utils.hexlify(currentGasPrice)
@@ -145,7 +119,7 @@ React.useEffect(()=>{
           // Send tokens
     try{
 
-      let transferResult = await  contract.transfers(to_address, BigInteger.from(numberOfTokens))
+      let transferResult = await  contract.transferFaucetToken(to_address, BigInteger.from(numberOfTokens))
            // ether send
       if(transferResult){
   
@@ -169,12 +143,8 @@ React.useEffect(()=>{
     // const provider = ethers.getDefaultProvider();
     await provider.send("eth_requestAccounts", []);
 
+    const tokenAddress = "0x61BD018F5d1E577EB0142023EF25bDfd00a9843B";
 
-    // 0x943545e0944702440BB082965BdB90591adBd361
-    // 0x786E1833E0E7b17F087f9ADa6E979e389f5f55CA
-    const tokenAddress = "0x786E1833E0E7b17F087f9ADa6E979e389f5f55CA";
-        // const tokenAddress = "0x9aF50EA22c0a8105db074023B6cB67E36516dBe9";
-        // const tokenAddress = "0x5d098CaA46828a69F665E5f4983C65F3dc05acDb";
         const tokenSymbol = 'USDT' 
         const tokenDecimals = 6
     
@@ -200,7 +170,7 @@ React.useEffect(()=>{
         }
     
 };
-
+// Enter play ground
 const enterToPlayPage = ()=>{
 
   router.push('/enterFreeToPlay');
@@ -221,7 +191,7 @@ const connectToMetamask = async ()=>{
   return (
 
     <SC.Holder>
-      <SC.Title>Request Novalue Token ( Dummy USDT) Faucet</SC.Title>
+      <SC.Title>Doubledice Dummy USDT  Faucet Token</SC.Title>
       <div style={{width:'100%',display:'flex',justifyContent:"flex-end"}} > <SC.Button type="submit" onClick={()=>connectToMetamask()}>🦊 connect to metamask and Switch to Mumbai </SC.Button></div>
       <SC.Button type="submit" onClick={(e)=>addToWallet(e)}>🦊 Add USDT to metamask</SC.Button>
       <SC.Button type="submit" onClick={(e)=>recieveDoublediceFaucet(e)}>GET 💰💰💰 1000 USDT </SC.Button>

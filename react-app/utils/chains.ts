@@ -72,20 +72,14 @@ export function getAddChainParameters(chainId: number): AddEthereumChainParamete
 export const switchNetwork = async () => {
   if (typeof window.ethereum !== "undefined") {
     // @ts-ignore
-    try{
-      await (window as any).ethereum.request({
-        method: "wallet_switchEthereumChain",
-        params: [
-          {
-            chainId: `0x${convertNumToHexdecimal(networkConfig.networkId)}`,
-          },
-        ],
-      });
-
-    }catch(e){
-
-     console.log(e);
-    }
+    await window.ethereum.request({
+      method: "wallet_switchEthereumChain",
+      params: [
+        {
+          chainId: `0x${convertNumToHexdecimal(networkConfig.networkId)}`,
+        },
+      ],
+    });
   }
 };
 
